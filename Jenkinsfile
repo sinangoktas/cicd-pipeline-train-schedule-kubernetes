@@ -45,7 +45,12 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
+                kubernetesDeploy(
                 //implement Kubernetes deployment here
+                kubeconfigId: 'kubeconfig',
+                configs: 'train-schedule-kube.yml',
+                enableConfigSubstitution: true
+                    )         
             }
         }
     }
